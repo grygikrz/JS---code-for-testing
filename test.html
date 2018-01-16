@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM Manipulation</title>
+    </head>
+    <link rel="stylesheet" href="styles.css" />
+    <body>
+      <button id='button3' name="test" value="hide">Hide</button>
+      <button id='button4' name="test" value="hide">Show</button>
+        <ul>
+            <li id="first">First Item</li>
+            <li id="second">Second Item</li>
+            <li id="third">Third Item</li>
+        </ul>
+      <button id='button1' name="test" value="hide">Remove</button>
+      <input type="text" name="inputtext" /><button id='button2' name="test" value="hide">Add</button>
+      <button id='button5' name="test" value="hide">TestEventClick</button>
+
+        <script>
+          let myList = document.querySelector('ul');
+          let inputText = document.querySelector('input');
+          let firstListItem = myList.firstElementChild;
+          let newitem = document.createElement('li');
+          const buttonRemove = document.querySelector('#button1');
+          const buttonAdd = document.querySelector('#button2');
+          const buttonHide = document.querySelector('#button3');
+          const buttonShow = document.querySelector('#button4');
+
+          buttonHide.addEventListener('click', () => {
+              myList.style.display = 'none';
+          });
+
+          buttonShow.addEventListener('click', () => {
+              myList.style.display = 'unset';
+
+          });
+          buttonRemove.addEventListener('click', () => {
+              myList.removeChild(firstListItem);
+          });
+
+          buttonAdd.addEventListener('click', () => {
+              newitem.textContent = inputText.value;
+              myList.appendChild(newitem);
+          });
+          const buttonTest = document.querySelector('#button5').addEventListener('click',test);
+          function test(e){
+            console.log(e);
+          }
+        </script>
+
+    </body>
+</html>
