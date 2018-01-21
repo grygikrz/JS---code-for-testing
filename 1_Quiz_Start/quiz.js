@@ -2,7 +2,11 @@ function Quiz(score){
   this.score = 0;
 }
 
-Quiz.prototype.UpdateScore = function(){
+Quiz.prototype.updateScore = function(){
 
-  this.score += 1;
-}
+  this.score++;
+};
+
+Quiz.prototype.getScore = function () {
+  return this.score;
+};

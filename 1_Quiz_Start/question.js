@@ -1,19 +1,31 @@
-function Question(nr,question,answers){
-  this.nr = nr;
-  this.question = question;
-  this.answers = answers;
+function Question(){
+  this.allNum = 0;
+  this.questions = [];
+  this.answers = [];
 }
 
-Question.prototype.AddAns = function () {
-    this.answers.push();
+Question.prototype.addAns = function (nr,ans,status) {
+    this.answers.push([nr,ans,status]);
 };
 
-Question.prototype.GetAns = function () {
+Question.prototype.addQuest = function (nr,ans) {
+    this.questions.push([nr,ans]);
+};
+
+Question.prototype.getAnswers = function (nr) {
 
     return this.answers;
 
 };
-Question.prototype.GetQuest = function(){
+Question.prototype.getQuest = function(nr){
 
-  return this.question;
+    return this.questions[nr][1];
+};
+
+Question.prototype.currentNum = function(){
+  return [this.nr,this.addNum()];
+};
+
+Question.prototype.addNum = function () {
+    return this.allNum++;
 };
