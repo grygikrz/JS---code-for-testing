@@ -3,7 +3,7 @@ const show = document.querySelector('#showajax');
 const xhr = new XMLHttpRequest();
 
 button.addEventListener('click', () => {
-  testAjax2();
+  testAjax3();
 });
 
 function testAjax(){
@@ -34,4 +34,25 @@ function testAjax2(){
     };
     xhr.open('GET','https://api.github.com/users', true);
     xhr.send();
+}
+
+function testAjax3(){
+  fetch('https://jsonplaceholder.typicode.com/posts')
+  .then(function(response) {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    // Read the response as json.
+    return response.json();
+  })
+  .then(function(responseAsJson) {
+    // Do stuff with the JSON
+    for(var x = 0; x < responseAsJson.length; x++){
+      show.innerHTML += '<b>'+responseAsJson[x]['id']+' '+responseAsJson[x]['title']+'</b><br>'+responseAsJson[x]['body']+'<br>';
+    }
+  })
+  .catch(function(error) {
+    console.log('Looks like there was a problem: \n', error);
+  });
+
 }
